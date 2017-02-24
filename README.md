@@ -1,12 +1,43 @@
 # Acc-msg-component
-原生JS模态框组件
+# Acc-msg-component原生JS模态框组件
 
 - 可自定义模态框大小位置内容
 - 可设置皮肤
 - 可设置拖动
-- 可绑定多个回调函数
-- 支持AMD，ES6模块引入以及<script>标签引入
+- 可设置模态框遮罩
+- 可绑定多个回调函数，且支持链式调用
+- 支持AMD，ES6模块引入以及`<script>`标签引入
 
+使用示例：
+```javascript
+import Acc from './Acc.js';
+let modal = new Acc();
+modal.confirm({
+        title: 'confirm标题',
+        content: 'confirm内容',
+        handlerConfirmBtn: function() {
+            alert('confirm第一个回调');
+        },
+        handlerCancelBtn: function() {
+            alert('cancel第一个回调');
+        },
+        textConfirmBtn: 'hello',
+        textCancelBtn: 'world',
+        isDraggable: false,
+    })
+    .on('confirm', function() {
+        alert('confirm第二个回调');
+    })
+    .on('confirm', function() {
+        alert('confirm第三个回调');
+    })
+    .on('cancel', function() {
+        alert('cancel第二个回调');
+    })
+    .on('cancel', function() {
+        alert('cancel第二个回调');
+    });
+```
 ```
  //参数默认值：
    {
