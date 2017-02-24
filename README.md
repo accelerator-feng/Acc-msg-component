@@ -1,5 +1,6 @@
 # Acc-msg-component
-# Acc-msg-component原生JS模态框组件
+
+原生JS模态框组件
 
 - 可自定义模态框大小位置内容
 - 可设置皮肤
