@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Acc-msg-component</title>
+    <link rel="stylesheet" type="text/css" href="dist/Acc.min.css">
+</head>
+
+<body>
+    <button type="button" class="foo">alert按钮</button>
+    <button type="button" class="bar">confirm按钮</button>
+    <script type="text/javascript" src='dist/Acc.min.js'></script>
+    <script type="text/javascript">
+    var Acc = new Acc.default();
+    document.querySelector('.foo').addEventListener('click', function() {
+        Acc.alert({
+                title: 'alert标题',
+                content: 'alert内容 弹窗可拖动',  
+                skinClassName: 'Acc-skin-a',
+                handlerAlertBtn: function() {
+                    alert('第一个回调');
+                }, 
+            })
+            .on('alert', function() {
+                alert('第二个回调');
+            })
+            .on('alert', function() {
+                alert('第三个回调');
+            });
+    }, false);
+    document.querySelector('.bar').addEventListener('click', function() {
+        Acc.confirm({
+                title: 'confirm标题',
+                content: 'confirm内容',
+                skinClassName: 'Acc-skin-a',
+                handlerConfirmBtn: function() {
+                    alert('confirm第一个回调');
+                },
+                handlerCancelBtn: function() {
+                    alert('cancel第一个回调');
+                },
+                textConfirmBtn: 'hello',
+                textCancelBtn: 'world',
+                isDraggable: false,
+            })
+            .on('confirm', function() {
+                alert('confirm第二个回调');
+            })
+            .on('confirm', function() {
+                alert('confirm第三个回调');
+            })
+            .on('cancel', function() {
+                alert('cancel第二个回调');
+            })
+            .on('cancel', function() {
+                alert('cancel第二个回调');
+            });
+    }, false);
+    </script>
+</body>
+
+</html>

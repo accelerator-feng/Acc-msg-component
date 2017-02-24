@@ -146,8 +146,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var _this = _possibleConstructorReturn(this, (Acc.__proto__ || Object.getPrototypeOf(Acc)).call(this));
 	
 	        _this.config = {
-	            width: 500,
-	            height: 300,
+	            width: 300,
+	            height: 135,
 	            title: '系统提示',
 	            content: 'welcome!',
 	            textAlertBtn: '确定',
@@ -177,7 +177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	            this.boundingBox = function (that) {
 	                var div = document.createElement('div');
-	                div.className = 'Acc-box';
+	                div.className = 'Acc-content';
 	                div.draggable = true;
 	                div.innerHTML = '<div class=\'Acc-header\'>' + that.config.title + '</div>\n                              <div class=\'Acc-body\'>' + that.config.content + '</div>\n                              <div class=\'Acc-footer\'>\n                                   ' + footerContent + '\n                              </div>';
 	                return div;
@@ -242,10 +242,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'setWindow',
 	        value: function setWindow(config) {
-	            this.boundingBox.style.width = config.width + 'px';
-	            this.boundingBox.style.height = config.height + 'px';
-	            this.boundingBox.style.left = config.x || (window.innerWidth - config.width) / 2 + "px";
-	            this.boundingBox.style.top = config.y || (window.innerHeight - config.width) / 2 + "px";
+	            var style = this.boundingBox.style;
+	            style.width = config.width + 'px';
+	            style.height = config.height + 'px';
+	            style.left = config.x || (window.innerWidth - config.width) / 2 + "px";
+	            style.top = config.y || (window.innerHeight - config.width) / 2 + "px";
 	        }
 	        // 拖动功能
 	
@@ -265,19 +266,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                mouseOffsetY = e.pageY - box.offsetTop;
 	            });
 	            box.addEventListener('dragend', function (e) {
-	                var moveX = e.pageX - mouseOffsetX,
-	                    moveY = e.pageY - mouseOffsetY,
-	
-	                // 获取页面宽高
-	                pageWidth = document.documentElement.clientWidth,
-	                    pageHeight = document.documentElement.clientHeight,
-	                    maxMoveX = pageWidth - box.offsetWidth,
-	                    maxMoveY = pageHeight - box.offsetHeight;
-	                // 限制弹窗拖动范围
-	                moveX = Math.min(maxMoveX, Math.max(0, moveX));
-	                moveY = Math.min(maxMoveY, Math.max(0, moveY));
-	                box.style.left = moveX + "px";
-	                box.style.top = moveY + "px";
+	                box.style.left = e.pageX - mouseOffsetX + "px";
+	                box.style.top = e.pageY - mouseOffsetY + "px";
 	            });
 	        }
 	        // 清除遮罩

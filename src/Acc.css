@@ -1,0 +1,145 @@
+.Acc-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.Acc-content {
+    position: fixed;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+}
+
+.Acc-header {
+    padding: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.Acc-body {
+    padding: 10px;
+}
+
+.Acc-footer {
+    padding: 10px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.Acc-alert-btn {
+    padding: 5px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-left: -25px;
+    width: 50px;
+    background-color: #fff;
+    user-select: none;
+    border: none;
+    background: #2ca6cb;
+    border-radius: 4px;
+    outline: 0;
+}
+
+.Acc-confirm-btn {
+    padding: 5px;
+    float: right;
+    width: 50px;
+    user-select: none;
+    border: none;
+    background: #2ca6cb;
+    border-radius: 4px;
+    margin: 0 5px;
+    outline: 0;
+    user-select: none;
+}
+
+.Acc-cancel-btn {
+    margin: 0 5px;
+    padding: 5px;
+    float: right;
+    width: 50px;
+    background-color: #fff;
+    user-select: none;
+    border: none;
+    border-radius: 4px;
+    outline: 0;
+    user-select: none;
+    border: 1px solid #ccc;
+}
+
+.Acc-alert-btn:hover,
+.Acc-confirm-btn:hover {
+    border-color: #204d74;
+    background-color: #337ab7;
+}
+
+.Acc-cancel-btn:hover {
+    border-color: #adadad;
+    background-color: #e6e6e6;
+}
+
+
+/*
+.Acc-skin-a.Acc-box {
+    
+}
+
+.Acc-skin-a .Acc-header {
+    
+}
+
+.Acc-skin-a .Acc-body {
+    
+}
+
+.Acc-skin-a .Acc-footer {
+    
+}
+
+.Acc-skin-a .Acc-alert-btn {
+    
+}
+
+.Acc-skin-a .Acc-confirm-btn {
+    
+}
+
+.Acc-skin-a .Acc-cancel-btn {
+    
+}
+*/
+
+
+/*
+.Acc-skin-b.Acc-box {
+
+}
+
+.Acc-skin-b .Acc-header {
+
+}
+
+.Acc-skin-b .Acc-body {
+
+}
+
+.Acc-skin-b .Acc-footer {
+
+}
+
+.Acc-skin-b .Acc-alert-btn {
+
+}
+
+.Acc-skin-b .Acc-confirm-btn {
+
+}
+
+.Acc-skin-b .Acc-cancel-btn {
+
+}
+ */
