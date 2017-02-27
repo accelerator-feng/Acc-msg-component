@@ -10,17 +10,18 @@
 <body>
     <button type="button" class="foo">alert按钮</button>
     <button type="button" class="bar">confirm按钮</button>
+    <button type="button" class="baz">prompt按钮</button>
     <script type="text/javascript" src='dist/Acc.min.js'></script>
     <script type="text/javascript">
     var Acc = new Acc.default();
     document.querySelector('.foo').addEventListener('click', function() {
         Acc.alert({
                 title: 'alert标题',
-                content: 'alert内容 弹窗可拖动',  
+                content: 'alert内容',
                 skinClassName: 'Acc-skin-a',
                 handlerAlertBtn: function() {
                     alert('第一个回调');
-                }, 
+                },
             })
             .on('alert', function() {
                 alert('第二个回调');
@@ -55,6 +56,27 @@
             })
             .on('cancel', function() {
                 alert('cancel第二个回调');
+            });
+    }, false);
+    document.querySelector('.baz').addEventListener('click', function() {
+        Acc.prompt({
+                title: 'prompt标题',
+                content: 'prompt提示',
+                defaultValuePromptInput: '输入内容',
+                textPromptBtn: '提交',
+                skinClassName: 'Acc-skin-a',
+                handlerPromptBtn: function(inputValue) {
+                    alert('输入的内容是 '+inputValue);
+                },
+                handlerCancelBtn: function() {
+                    alert('cancel回调');
+                },
+            })
+            .on('prompt', function() {
+                alert('第二个回调');
+            })
+            .on('prompt', function() {
+                alert('第三个回调');
             });
     }, false);
     </script>

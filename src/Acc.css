@@ -27,6 +27,7 @@
 .Acc-footer {
     padding: 10px;
     border-top: 1px solid #e5e5e5;
+    overflow: hidden;
 }
 
 .Acc-alert-btn {
@@ -57,6 +58,25 @@
     user-select: none;
 }
 
+.Acc-prompt-btn {
+    padding: 5px;
+    float: right;
+    width: 50px;
+    user-select: none;
+    border: none;
+    background: #2ca6cb;
+    border-radius: 4px;
+    margin: 0 5px;
+    outline: 0;
+    user-select: none;
+}
+
+.Acc-prompt-input {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
 .Acc-cancel-btn {
     margin: 0 5px;
     padding: 5px;
@@ -72,7 +92,8 @@
 }
 
 .Acc-alert-btn:hover,
-.Acc-confirm-btn:hover {
+.Acc-confirm-btn:hover,
+.Acc-prompt-btn {
     border-color: #204d74;
     background-color: #337ab7;
 }

@@ -2,7 +2,7 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        main: './src/js/Acc.js'
+        main: './src/Acc.js'
     },
     devtool: 'source-map',
     output: {

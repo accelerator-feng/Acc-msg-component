@@ -45,15 +45,20 @@ class Acc extends Widget {
         super();
         this.config = {
             width: 300,
-            height: 135,
             title: '系统提示',
             content: 'welcome!',
             textAlertBtn: '确定',
             textConfirmBtn: '确定',
             textCancelBtn: '取消',
+            textPromptBtn: '确定',
+            _promptInput: '',
+            isPromptInputPassword: false,
+            defaultValuePromptInput: '',
+            maxlengthPromptInput: 10,
             handlerAlertBtn: null,
             handlerConfirmBtn: null,
             handlerCancelBtn: null,
+            handlerPromptBtn: null,
             skinClassName: null,
             hasMask: true,
             isDraggable: true,
@@ -68,6 +73,15 @@ class Acc extends Widget {
             case 'confirm':
                 footerContent = `<input type="button" class='Acc-confirm-btn' value=${this.config.textConfirmBtn}><input type="button" class='Acc-cancel-btn' value=${this.config.textCancelBtn}>`;
                 break;
+            case 'prompt':
+                this.config.content +=
+                    `<p class='Acc-body-prompt'>
+                        <input type=${this.config.isPromptInputPassword?'password':'text'} value=${this.config.defaultValuePromptInput} maxlength=${this.config.maxlengthPromptInput} class='Acc-prompt-input'>
+                    </p>`;
+                footerContent =
+                    `<input type='button' value=${this.config.textPromptBtn} class='Acc-prompt-btn'>
+                    <input type='button' value=${this.config.textCancelBtn} class='Acc-cancel-btn'>`;
+                break;
         }
         this.boundingBox = function(that) {
             let div = document.createElement('div');
@@ -80,6 +94,7 @@ class Acc extends Widget {
                               </div>`;
             return div;
         }(this);
+        this._promptInput = this.boundingBox.querySelector('.Acc-prompt-input');
         // 创建遮罩
         if (this.config.hasMask) {
             this.mask = function() {
@@ -106,12 +121,16 @@ class Acc extends Widget {
                     this.fire('cancel');
                     this.destroy();
                     break;
+                case 'Acc-prompt-btn':
+                    this.fire('prompt', this._promptInput.value);
+                    this.destroy();
             }
         });
         // 添加回调函数
         if (this.config.handlerAlertBtn) { this.on('alert', this.config.handlerAlertBtn); }
         if (this.config.handlerConfirmBtn) { this.on('confirm', this.config.handlerConfirmBtn); }
         if (this.config.handlerCancelBtn) { this.on('cancel', this.config.handlerCancelBtn); }
+        if (this.config.handlerPromptBtn) { this.on('prompt', this.config.handlerPromptBtn); }
     }
     syncUI() {
             this.setWindow(this.config);
@@ -158,6 +177,12 @@ class Acc extends Widget {
     confirm(config) {
         config = Object.assign(this.config, config, { type: 'confirm' });
         this.render();
+        return this;
+    }
+    prompt(config) {
+        config = Object.assign(this.config, config, { type: 'prompt' });
+        this.render();
+        this._promptInput.select();
         return this;
     }
 }
