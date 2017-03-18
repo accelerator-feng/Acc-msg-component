@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Acc-msg-component</title>
-    <link rel="stylesheet" type="text/css" href="dist/Acc.min.css">
+    <link rel="stylesheet" type="text/css" href='dist/Acc.min.css'>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
     document.querySelector('.foo').addEventListener('click', function() {
         Acc.alert({
                 title: 'alert标题',
-                content: 'alert内容', 
+                content: 'alert内容',
                 skinClassName: 'Acc-skin-a',
                 handlerAlertBtn: function() {
                     alert('第一个回调');
@@ -66,7 +66,7 @@
                 textPromptBtn: '提交',
                 skinClassName: 'Acc-skin-a',
                 handlerPromptBtn: function(inputValue) {
-                    alert('输入的内容是 '+inputValue);
+                    alert('输入的内容是 ' + inputValue);
                 },
                 handlerCancelBtn: function() {
                     alert('cancel回调');

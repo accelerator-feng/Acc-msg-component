@@ -108,6 +108,7 @@ class Acc extends Widget {
     bindUI() {
         // 监听按钮点击
         this.boundingBox.addEventListener('click', e => {
+            e = e || window.event;
             switch (e.target.className) {
                 case 'Acc-alert-btn':
                     this.fire('alert');
@@ -152,19 +153,30 @@ class Acc extends Widget {
     draggable() {
             let mouseOffsetX = 0,
                 mouseOffsetY = 0,
+                _y = 0,
                 box = this.boundingBox;
             document.body.addEventListener('dragover', e => {
+                e = e || window.event;
                 e.preventDefault();
             });
             box.addEventListener('dragstart', e => {
-                //鼠标点击点离弹窗左边框的距离
+                e = e || window.event;
+                e.dataTransfer.setData("box", e.target.className);
+                _y = e.screenY - e.pageY;
+                //鼠标点击点离窗左边框的距离
                 mouseOffsetX = e.pageX - box.offsetLeft;
                 //鼠标点击点离弹窗上边框的距离
                 mouseOffsetY = e.pageY - box.offsetTop;
             });
             box.addEventListener('dragend', e => {
-                box.style.left = e.pageX - mouseOffsetX + "px";
-                box.style.top = e.pageY - mouseOffsetY + "px";
+                e = e || window.event;
+                let x = e.pageX || e.screenX - box.offsetWidth / 2,
+                    y = e.pageY || e.screenY - box.offsetHeight,
+                    maxMoveX = document.documentElement.clientWidth - box.offsetWidth,
+                    maxMoveY = document.documentElement.clientHeight - box.offsetHeight;
+                box.style.left = Math.min(Math.max(0, x - mouseOffsetX), maxMoveX) + "px";
+                box.style.top = Math.min(Math.max(0, y - mouseOffsetY), maxMoveY) + "px";
+
             });
         }
         // 清除遮罩
